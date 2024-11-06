@@ -9,6 +9,18 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model User {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  email String
+  name String?
+  username String @unique
+  password String
+  projileImage String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
