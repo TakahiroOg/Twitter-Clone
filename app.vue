@@ -12,14 +12,14 @@
         </div>
 
         <!-- Main content -->
-        <!-- <main class="col-span-12 md:col-span-8 xl:col-span-6 bg-slate-200">
-          <h1>aaa</h1>
-        </main> -->
+        <main class="col-span-12 md:col-span-8 xl:col-span-6 bg-gray-800">
+          <router-view />
+        </main>
 
         <!-- Right sidebar -->
-        <div class="hidden md:block  xl:col-span-4 md:col-span-3 bg-slate-200">
+        <div class="hidden md:block  xl:col-span-4 md:col-span-3 bg-gray-800">
           <div class="sticky top-0">
-            <h1>bbb</h1>
+            <SidebarRight />
           </div>
         </div>
 
