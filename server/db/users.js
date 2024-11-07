@@ -1,14 +1,25 @@
 import { prisma } from ".";
-import { bcrypt } from 'bcrypt'
+import bcrypt from "bcrypt"
 
-export const createUser = (userData) => {
+export const createUser = async (userData) => {
+
+    const hasedPassword = await bcrypt.hash(userData.password, 10);
+
     const finalUserData = {
         ...userData,
-        password: bcrypt.hashSync(userData.password, 10)
+        password: hasedPassword
     }
 
 
     return prisma.user.create({
-        data: userData
+        data: finalUserData
+    })
+}
+
+export const getUserByUsername = (username) => {
+    return prisma.user.findUnique({
+        where: {
+            username
+        }
     })
 }
